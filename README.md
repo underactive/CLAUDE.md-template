@@ -15,12 +15,12 @@ AI coding assistants work better when they understand your project's architectur
 | `docs/future-improvements.md` | Ideas backlog template |
 | `docs/testing-checklist.md` | Example QA checklist (from an embedded BLE device project) |
 
-## Usage
+## Usage (confirmed with Claude 2.1.62 / Opus 4.6)
 
-1. Copy `CLAUDE_TEMPLATE.md` into your project root as `CLAUDE.md`
+1. Copy `CLAUDE_TEMPLATE.md` into your project root
 2. Optionally copy the `docs/` templates for supplementary documentation
-3. Fill in the `[bracketed placeholders]` with your project-specific details
-4. Delete any sections that don't apply (e.g., the Hardware section for software-only projects — noted with HTML comments)
+3. In Claude CLI, do an `/init` 
+4. Next, prompt `redo @CLAUDE.md using @CLAUDE_TEMPLATE.md as the template. do not remove any headings from the template. fill in the gaps from analyzing the project`
 
 ## Template Sections
 
