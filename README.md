@@ -1,0 +1,47 @@
+# CLAUDE.md Template
+
+A structured template for creating `CLAUDE.md` files — project context documents that give [Claude Code](https://claude.ai/code) (and other AI assistants) the knowledge they need to work effectively in your codebase.
+
+## Why
+
+AI coding assistants work better when they understand your project's architecture, conventions, and gotchas upfront. A `CLAUDE.md` file provides this context in a format that's easy to maintain alongside your code. Without it, the assistant has to rediscover your project structure, build system, and design decisions every session.
+
+## What's Included
+
+| File | Description |
+|------|-------------|
+| `CLAUDE_TEMPLATE.md` | The main template — copy this into your project as `CLAUDE.md` and fill in the bracketed placeholders |
+| `docs/version-history.md` | Changelog template |
+| `docs/future-improvements.md` | Ideas backlog template |
+| `docs/testing-checklist.md` | Example QA checklist (from an embedded BLE device project) |
+
+## Usage
+
+1. Copy `CLAUDE_TEMPLATE.md` into your project root as `CLAUDE.md`
+2. Optionally copy the `docs/` templates for supplementary documentation
+3. Fill in the `[bracketed placeholders]` with your project-specific details
+4. Delete any sections that don't apply (e.g., the Hardware section for software-only projects — noted with HTML comments)
+
+## Template Sections
+
+- **Project Overview** — Name, description, version, status
+- **Hardware** — MCU, components, pin assignments (removable for software projects)
+- **Architecture** — Core files, dependencies, key subsystems, protocols
+- **Build Configuration** — Build tool rationale, environment variables
+- **Code Style** — Linter, formatter, key conventions
+- **External Integrations** — Third-party services and SDKs
+- **Known Issues / Limitations** — Current bugs and constraints
+- **Development Rules** — Opinionated rules that prevent real bug classes (input validation, bounds checking, bounded formatting, etc.)
+- **Common Modifications** — Step-by-step recipes for routine changes
+- **File Inventory** — Quick-reference file/directory table
+- **Build Instructions** — Prerequisites, quick start, troubleshooting
+- **Testing** — Links to QA checklist
+- **Future Improvements** — Links to ideas backlog
+- **Maintaining This File** — Guidelines for keeping the document current
+
+## Tips
+
+- **Start small.** You don't need to fill every section on day one. Start with Architecture, Build Instructions, and Development Rules — the sections that save the most rediscovery time.
+- **Keep it honest.** Remove sections that don't apply rather than leaving placeholders. An incomplete but accurate document is more useful than a comprehensive but stale one.
+- **Evolve it.** Add Development Rules when you find new bug classes during QA. Update Architecture when subsystems change. The Maintaining This File section has guidance on when to update what.
+- **Offload detail.** Move large sections (testing checklists, changelogs) to `docs/` and link from the main file to keep `CLAUDE.md` scannable.
