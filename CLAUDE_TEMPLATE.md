@@ -283,10 +283,18 @@ See `[path/to/future-improvements]` for the ideas backlog.
 For sections that grow large (display layouts, testing checklists, changelogs), move them to separate files under `docs/` and link from here. This keeps the main CLAUDE.md scannable while preserving detail.
 
 ### Future improvements tracking
-When a new feature is added and related enhancements or follow-up ideas are suggested but declined, add them as `- [ ]` items to `docs/future-improvements.md`. This preserves good ideas for later without cluttering the current task.
+When a new feature is added and related enhancements or follow-up ideas are suggested but declined, add them as `- [ ]` items to `docs/CLAUDE.md/future-improvements.md`. This preserves good ideas for later without cluttering the current task.
+
+### Version history maintenance
+When making changes that are committed to the repository, add a row to the version history table in `docs/CLAUDE.md/version-history.md`. Each entry should include:
+
+- **Ver** — A short version identifier (e.g., `v0.1`, `v0.2`). Increment the minor version for each entry. Use the most recent entry in the table to determine the next version number.
+- **Changes** — A brief summary of what changed.
+
+Append new rows to the bottom of the table. Do not remove or rewrite existing entries.
 
 ### Testing checklist maintenance
-When adding or modifying user-facing behavior (new settings, UI modes, protocol commands, or display changes), add corresponding `- [ ]` test items to `docs/testing-checklist.md`. Each item should describe the expected observable behavior, not the implementation detail.
+When adding or modifying user-facing behavior (new settings, UI modes, protocol commands, or display changes), add corresponding `- [ ]` test items to `docs/CLAUDE.md/testing-checklist.md`. Each item should describe the expected observable behavior, not the implementation detail.
 
 ### What belongs here vs. in code comments
 - **Here:** Architecture decisions, cross-cutting concerns, "how things fit together," gotchas, recipes
