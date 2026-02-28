@@ -12,6 +12,7 @@ This repository is a **CLAUDE.md template** — a structured starting point for 
 - `docs/CLAUDE.md/version-history.md` — Version history template (empty table).
 - `docs/CLAUDE.md/future-improvements.md` — Ideas backlog template (checkbox list).
 - `docs/CLAUDE.md/testing-checklist.md` — Example QA testing checklist (from an embedded BLE device project).
+- `docs/CLAUDE.md/plans/` — Directory for plan, implementation, and audit records (epoch-prefixed directories).
 
 ## How This Repo Is Used
 

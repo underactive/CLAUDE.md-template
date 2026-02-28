@@ -184,11 +184,43 @@ When input exceeds limits or operations fail, provide actionable error feedback 
 
 ---
 
+## Plan Pre-Implementation
+
+Before planning, check `docs/CLAUDE.md/plans/` for prior plans that touched the same areas. Scan the **Files changed** lists in both `implementation.md` and `audit.md` files to find relevant plans without reading every file — then read the full `plan.md` only for matches. This keeps context window usage low while preserving access to project history.
+
+When a plan is finalized and about to be implemented, write the full plan to `docs/CLAUDE.md/plans/{epoch}-{plan_name}/plan.md`, where `{epoch}` is the Unix timestamp at the time of writing and `{plan_name}` is a short kebab-case description of the plan (e.g., `1709142000-add-user-auth/plan.md`).
+
+The epoch prefix ensures chronological ordering — newer plans visibly supersede earlier ones at a glance based on directory name ordering.
+
+The plan document should include:
+- **Objective** — what is being implemented and why
+- **Changes** — files to modify/create, with descriptions of each change
+- **Dependencies** — any prerequisites or ordering constraints between changes
+- **Risks / open questions** — anything flagged during planning that needs attention
+
+---
+
+## Plan Post-Implementation
+
+After a plan has been fully implemented, write the completed implementation record to `docs/CLAUDE.md/plans/{epoch}-{plan_name}/implementation.md`, using the same directory as the corresponding `plan.md`.
+
+The implementation document **must** include:
+- **Files changed** — list of all files created, modified, or deleted. This section is **required** — it serves as a lightweight index for future planning, allowing prior plans to be found by scanning file lists without reading full plan contents.
+- **Summary** — what was actually implemented (noting any deviations from the plan)
+- **Verification** — steps taken to verify the implementation is correct (tests run, manual checks, build confirmation)
+- **Follow-ups** — any remaining work, known limitations, or future improvements identified during implementation
+
+If the implementation added or changed user-facing behavior (new settings, UI modes, protocol commands, or display changes), add corresponding `- [ ]` test items to `docs/CLAUDE.md/testing-checklist.md`. Each item should describe the expected observable behavior, not the implementation detail.
+
+---
+
 ## Post-Implementation Audit
 
 After finishing implementation of a plan, run the following subagents **in parallel** to audit all changed files.
 
 > **Scope directive for all subagents:** Only flag issues in the changed code and its immediate dependents. Do not audit the entire codebase.
+
+> **Output directive:** After all subagents complete, write a single consolidated audit report to `docs/CLAUDE.md/plans/{epoch}-{plan_name}/audit.md`, using the same directory as the corresponding `plan.md`. The audit report **must** include a **Files changed** section listing all files where findings were flagged. This section is **required** — it serves as a lightweight index for future planning, covering files affected by audit findings (including immediate dependents not in the original implementation).
 
 ### 1. QA Audit (subagent)
 Review changes for:
@@ -239,6 +271,21 @@ Review changes for:
 - **Naming & structure**: inconsistent naming conventions, business/domain logic buried in UI or driver layers, utility functions duplicated across modules
 - **Documentation**: public API changes without updated doc comments, non-obvious workarounds missing a `// WHY:` comment, breaking changes without migration notes
 
+---
+
+## Audit Post-Implementation
+
+After audit findings have been addressed, update the `implementation.md` file in the corresponding `docs/CLAUDE.md/plans/{epoch}-{plan_name}/` directory:
+
+1. **Flag fixed items** — In the audit report (`docs/CLAUDE.md/plans/{epoch}-{plan_name}/audit.md`), mark each finding that was fixed with a `[FIXED]` prefix so it is visually distinct from unresolved items.
+
+2. **Append a fixes summary** — Add an `## Audit Fixes` section at the end of `implementation.md` containing:
+   - **Fixes applied** — a numbered list of each fix, referencing the audit finding it addresses (e.g., "Fixed unchecked index access flagged by Security Audit §2")
+   - **Verification checklist** — a `- [ ]` checkbox list of specific tests or manual checks to confirm each fix is correct (e.g., "Verify bounds check on `configIndex` with out-of-range input returns fallback")
+
+3. **Leave unresolved items as-is** — Any audit findings intentionally deferred or accepted as-is should remain unmarked in the audit report. Add a brief note in the fixes summary explaining why they were not addressed.
+
+4. **Update testing checklist** — If any audit fixes changed user-facing behavior, add corresponding `- [ ]` test items to `docs/CLAUDE.md/testing-checklist.md`. Each item should describe the expected observable behavior, not the implementation detail.
 
 ---
 
@@ -281,6 +328,7 @@ Version string appears in N files:
 | ... | ... |
 | `CLAUDE.md` | This file |
 | `docs/` | [What's in docs] |
+| `docs/CLAUDE.md/plans/` | Plan, implementation, and audit records (epoch-prefixed directories for chronological ordering) |
 
 ---
 

@@ -11,14 +11,15 @@ AI coding assistants work better when they understand your project's architectur
 | File | Description |
 |------|-------------|
 | `CLAUDE_TEMPLATE.md` | The main template — copy this into your project as `CLAUDE.md` and fill in the bracketed placeholders |
-| `docs/version-history.md` | Changelog template |
-| `docs/future-improvements.md` | Ideas backlog template |
-| `docs/testing-checklist.md` | Example QA checklist (from an embedded BLE device project) |
+| `docs/CLAUDE.md/version-history.md` | Changelog template |
+| `docs/CLAUDE.md/future-improvements.md` | Ideas backlog template |
+| `docs/CLAUDE.md/testing-checklist.md` | Example QA checklist (from an embedded BLE device project) |
+| `docs/CLAUDE.md/plans/` | Directory for plan, implementation, and audit records (epoch-prefixed for chronological ordering) |
 
 ## Usage (confirmed with Claude 2.1.62 / Opus 4.6)
 
 1. Copy `CLAUDE_TEMPLATE.md` into your project root
-2. Optionally copy the `docs/` templates for supplementary documentation
+2. Optionally copy the `docs/CLAUDE.md/` templates for supplementary documentation
 3. In Claude CLI, do an `/init` 
 4. Next, prompt `redo @CLAUDE.md using @CLAUDE_TEMPLATE.md as the template. do not remove any headings from the template. fill in the gaps from analyzing the project`
 
@@ -32,6 +33,10 @@ AI coding assistants work better when they understand your project's architectur
 - **External Integrations** — Third-party services and SDKs
 - **Known Issues / Limitations** — Current bugs and constraints
 - **Development Rules** — Opinionated rules that prevent real bug classes (input validation, bounds checking, bounded formatting, etc.)
+- **Plan Pre-Implementation** — Write the finalized plan before implementing; scan prior plans for context
+- **Plan Post-Implementation** — Record what was implemented, files changed, and verification steps
+- **Post-Implementation Audit** — Run parallel audit subagents across 7 categories (QA, security, state, etc.)
+- **Audit Post-Implementation** — Fix audit findings, flag resolved items, append verification checklist
 - **Common Modifications** — Step-by-step recipes for routine changes
 - **File Inventory** — Quick-reference file/directory table
 - **Build Instructions** — Prerequisites, quick start, troubleshooting
