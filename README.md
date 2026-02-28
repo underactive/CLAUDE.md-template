@@ -20,8 +20,17 @@ AI coding assistants work better when they understand your project's architectur
 
 1. Copy `CLAUDE_TEMPLATE.md` into your project root
 2. Optionally copy the `docs/CLAUDE.md/` templates for supplementary documentation
-3. In Claude CLI, do an `/init` 
-4. Next, prompt `redo @CLAUDE.md using @CLAUDE_TEMPLATE.md as the template. do not remove any headings from the template. fill in the gaps from analyzing the project`
+
+### A. Existing codebase
+
+3. In Claude CLI, run `/init`
+4. Prompt: `redo @CLAUDE.md using @CLAUDE_TEMPLATE.md as the template. do not remove any headings from the template. fill in the gaps from analyzing the project`
+
+### B. New project (planning from scratch with Claude)
+
+3. Before initiating your plan, include the following directive in your prompt to Claude: `follow the Plan Pre-Implementation, Plan Post-Implementation, Post-Implementation Audit, Audit Post-Implementation directives in @CLAUDE_TEMPLATE.md`
+4. Claude will execute the plan and generate the corresponding documentation (`plan.md`, `implementation.md`, `audit.md`) alongside the project code
+5. Once the project has been implemented, prompt: `redo @CLAUDE.md using @CLAUDE_TEMPLATE.md as the template. do not remove any headings from the template. fill in the gaps from analyzing the project`
 
 ## Template Sections
 

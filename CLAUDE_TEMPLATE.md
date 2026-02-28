@@ -394,7 +394,7 @@ When a new feature is added and related enhancements or follow-up ideas are sugg
 ### Version history maintenance
 When making changes that are committed to the repository, add a row to the version history table in `docs/CLAUDE.md/version-history.md`. Each entry should include:
 
-- **Ver** — A short version identifier (e.g., `v0.1`, `v0.2`). Increment the minor version for each entry. Use the most recent entry in the table to determine the next version number.
+- **Ver** — A semantic version identifier (e.g., `v0.1.0`, `v0.2.0`). Follow semver: MAJOR.MINOR.PATCH. Use the most recent entry in the table to determine the next version number.
 - **Changes** — A brief summary of what changed.
 
 Append new rows to the bottom of the table. Do not remove or rewrite existing entries.
