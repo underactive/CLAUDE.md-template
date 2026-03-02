@@ -30,7 +30,7 @@ AI coding assistants work better when they understand your project's architectur
 
 3. Before initiating your plan, include the following directive in your prompt to Claude: `follow the Plan Pre-Implementation, Plan Post-Implementation, Post-Implementation Audit, Audit Post-Implementation directives in @CLAUDE_TEMPLATE.md`
 4. Claude will execute the plan and generate the corresponding documentation (`plan.md`, `implementation.md`, `audit.md`) alongside the project code
-5. Once the project has been implemented, prompt: `redo @CLAUDE.md using @CLAUDE_TEMPLATE.md as the template. do not remove any headings from the template. fill in the gaps from analyzing the project`
+5. Once the project has been implemented, prompt: `redo @CLAUDE.md using @CLAUDE_TEMPLATE.md as the template. ensure any info from the original is not lost in the redo (either in the main doc or subdocs in docs/CLAUDE.md/*.md). do not remove any headings from the template. fill in the gaps from analyzing the project`
 
 ## Template Sections
 
