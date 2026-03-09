@@ -373,6 +373,9 @@ See `[path/to/future-improvements]` for the ideas backlog.
 
 <!-- Instructions for keeping CLAUDE.md accurate over time -->
 
+### Keep CLAUDE.md in sync with the codebase
+**Every plan that adds, removes, or changes a feature must include CLAUDE.md updates as part of the implementation.** Treat CLAUDE.md as a living spec -- if the code and this file disagree, this file is wrong and must be fixed before the work is considered complete. During plan post-implementation, verify that all sections affected by the change are accurate. If a feature is removed, delete its documentation here rather than leaving stale references.
+
 ### When to update CLAUDE.md
 - **Adding a new subsystem or module** — add it to Architecture and File Inventory
 - **Adding a new setting or config field** — update the Settings section and Common Modifications
